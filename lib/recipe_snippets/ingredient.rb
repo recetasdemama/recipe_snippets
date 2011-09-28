@@ -1,3 +1,11 @@
+require 'polyglot'
+require 'treetop'
+
+require File.expand_path('../ingredient_line.treetop', __FILE__)
+
+parser = IngredientLineParser.new
+
+
 module RecipeSnippets
   class Ingredient
     
@@ -25,5 +33,8 @@ module RecipeSnippets
     def can_split?(html, separator)
       html[separator] unless html == "aceite de oliva virgen"
     end
+    
+    
+    
   end
 end
