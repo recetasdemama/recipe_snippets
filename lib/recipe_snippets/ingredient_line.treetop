@@ -1,3 +1,53 @@
 grammar IngredientLine
 
+  rule ingredient
+    ingredient_amount blank "de" blank line_to_eol {
+      def name
+        line_to_eol.text_value
+      end
+      def amount
+        ingredient_amount.amount
+      end
+    }
+  end
+  
+  rule unit
+    "g"
+  end
+  
+  rule ingredient_name
+    ""
+  end
+  
+  rule ingredient_amount
+    number blank unit {
+      def amount
+        number.text_value + blank.text_value + unit.text_value
+      end
+    }
+  end
+  
+  rule number
+    '-'? [1-9] [0-9]*
+  end
+  
+  rule space
+    (white / line_to_eol)+
+  end
+
+  rule line_to_eol
+    (!eol .)*
+  end
+
+  rule white
+    blank / eol
+  end
+  
+  rule blank
+    [ \t]
+  end
+  
+  rule eol
+    ("\r" "\n"?) / "\n"
+  end
 end
