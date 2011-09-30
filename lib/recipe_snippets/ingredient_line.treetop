@@ -1,7 +1,7 @@
 grammar IngredientLine
 
   rule ingredient
-   ("zumo" sp "de" sp)? optional_amount:(ingredient_amount?) line_to_eol {
+   ingredient_preparation? optional_amount:(ingredient_amount?) line_to_eol {
       def name
         line_to_eol.text_value
       end
@@ -28,7 +28,11 @@ grammar IngredientLine
   end
   
   rule unit
-    "g"
+    "gramos" / "ml" / "g"
+  end
+  
+  rule ingredient_preparation
+    ("zumo" / "cáscara" / "ralladura") sp "de" sp 
   end
   
   rule number
