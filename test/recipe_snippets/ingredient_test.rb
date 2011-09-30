@@ -16,7 +16,6 @@ module RecipeSnippets
       test_ingredient_parse "cáscara de limón", "", "limón"
       test_ingredient_parse "ralladura de naranja", "", "naranja"
       test_ingredient_parse "medio kilo de aceitunas", "medio kilo", "aceitunas"
-      test_ingredient_parse "unas rodajas de zanahoria", "", "zanahoria"
       test_ingredient_parse "Unas rodajas de zanahoria", "", "zanahoria"
     end
     
@@ -25,7 +24,7 @@ module RecipeSnippets
       test_ingredient_render "sal", '<span class="ingredient"><span class="name">sal</span></span>'
       test_ingredient_render "zumo de un limón", '<span class="ingredient">zumo de <span class="amount">un</span> <span class="name">limón</span></span>'
       test_ingredient_render "un kilo de aceitunas", '<span class="ingredient"><span class="amount">un kilo</span> de <span class="name">aceitunas</span></span>'
+      test_ingredient_render "una aceituna", '<span class="ingredient"><span class="amount">una</span> <span class="name">aceituna</span></span>'
     end
   end
 end
-

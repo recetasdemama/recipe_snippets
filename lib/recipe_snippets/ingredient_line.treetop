@@ -32,7 +32,7 @@ grammar IngredientLine
   end
   
   rule ingredient_preparation
-    article? ("zumo" / "cáscara" / "ralladura" / "rodajas") sp "de" sp 
+    caps_article? sp ("zumo" / "cáscara" / "ralladura" / "rodajas") sp "de" sp 
   end
   
   rule number
@@ -40,9 +40,13 @@ grammar IngredientLine
   end
   
   rule article
-    "Unas" / "unas" / "Unos" / "unos" / "Una" / "una" / "Un" / "un"
+    "unas" / "unos" / "una" / "un"
   end
 
+  rule caps_article
+    "Unas" / "Unos"/ "Una" / "Un"
+  end
+  
   rule line_to_eol
     (!eol .)*
   end
