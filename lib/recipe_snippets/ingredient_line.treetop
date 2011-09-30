@@ -28,15 +28,19 @@ grammar IngredientLine
   end
   
   rule unit
-    "gramos" / "ml" / "g"
+    "gramos" / "ml" / "g" / "kilo"
   end
   
   rule ingredient_preparation
-    ("zumo" / "cáscara" / "ralladura") sp "de" sp 
+    article? ("zumo" / "cáscara" / "ralladura" / "rodajas") sp "de" sp 
   end
   
   rule number
-    '-'? [1-9] [0-9]* / "un"
+    '-'? [1-9] [0-9]* / article / "Medio" / "medio" / "Media" / "media"
+  end
+  
+  rule article
+    "Unas" / "unas" / "Unos" / "unos" / "Una" / "una" / "Un" / "un"
   end
 
   rule line_to_eol

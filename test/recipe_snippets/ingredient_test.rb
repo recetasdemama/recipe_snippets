@@ -6,60 +6,26 @@ module RecipeSnippets
   describe Ingredient do
     
     describe "parsing" do
-      it "parses 100 gramos de queso" do
-        i = Ingredient.new("100 gramos de queso")
-        i.amount.must_equal "100 gramos"
-        i.name.must_equal "queso"
-      end
-      
-      it "parses 100g de queso" do
-        i = Ingredient.new("100g de queso")
-        i.amount.must_equal "100g"
-        i.name.must_equal "queso"
-      end
-      
-      it "parses 30 ml de aceite de girasol" do
-        i = Ingredient.new("30 ml de aceite de girasol")
-        i.amount.must_equal "30 ml"
-        i.name.must_equal "aceite de girasol"
-      end
-      
-      it "parses 1 berenjena" do
-        i = Ingredient.new("1 berenjena")
-        i.amount.must_equal "1"
-        i.name.must_equal "berenjena"        
-      end
-     
-      it "parses sal" do
-        i = Ingredient.new("sal")
-        i.amount.must_equal ""
-        i.name.must_equal "sal"
-      end
-
-      it "parses 'aceite de oliva virgen'" do
-        i = Ingredient.new("aceite de oliva virgen")
-        i.amount.must_equal ""
-        i.name.must_equal "aceite de oliva virgen"
-      end
-
-      it "parses 'zumo de un limón'" do
-        i = Ingredient.new("zumo de un limón")
-        i.amount.must_equal "un"
-        i.name.must_equal "limón"
-      end
-      
-      it "parses 'cáscara de limón'" do
-        i = Ingredient.new("cáscara de limón")
-        i.amount.must_equal ""
-        i.name.must_equal "limón"
-      end
-      
-      it "parses 'ralladura de naranja'" do
-        i = Ingredient.new("ralladura de naranja")
-        i.amount.must_equal ""
-        i.name.must_equal "naranja"
-      end
-
+      test_ingredient_parse "100 gramos de queso", "100 gramos", "queso"    
+      test_ingredient_parse "100g de queso", "100g", "queso"
+      test_ingredient_parse "30 ml de aceite de girasol", "30 ml", "aceite de girasol"
+      test_ingredient_parse "1 berenjena", "1", "berenjena"
+      test_ingredient_parse "sal", "", "sal"
+      test_ingredient_parse "aceite de oliva", "", "aceite de oliva"
+      test_ingredient_parse "zumo de un limón", "un", "limón"
+      test_ingredient_parse "cáscara de limón", "", "limón"
+      test_ingredient_parse "ralladura de naranja", "", "naranja"
+      test_ingredient_parse "medio kilo de aceitunas", "medio kilo", "aceitunas"
+      test_ingredient_parse "unas rodajas de zanahoria", "", "zanahoria"
+      test_ingredient_parse "Unas rodajas de zanahoria", "", "zanahoria"
+    end
+    
+    describe "rendering" do
+      test_ingredient_render "100 gramos de queso", '<span class="ingredient"><span class="amount">100 gramos</span> de <span class="name">queso</span></span>'
+      test_ingredient_render "sal", '<span class="ingredient"><span class="name">sal</span></span>'
+      test_ingredient_render "zumo de un limón", '<span class="ingredient">zumo de <span class="amount">un</span> <span class="name">limón</span></span>'
+      test_ingredient_render "un kilo de aceitunas", '<span class="ingredient"><span class="amount">un kilo</span> de <span class="name">aceitunas</span></span>'
     end
   end
 end
+
