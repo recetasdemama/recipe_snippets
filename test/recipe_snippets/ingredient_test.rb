@@ -11,14 +11,18 @@ module RecipeSnippets
         i.amount.must_equal "100 g"
         i.name.must_equal "queso"
       end
-=begin      
+      
+      it "parses 100g de queso" do
+        i = Ingredient.new("100g de queso")
+        i.amount.must_equal "100g"
+        i.name.must_equal "queso"
+      end
       it "parses 1 berenjena" do
-        pending
         i = Ingredient.new("1 berenjena")
         i.amount.must_equal "1"
         i.name.must_equal "berenjena"        
       end
-      
+=begin      
       it "parses sal" do
         i = Ingredient.new("sal")
         i.amount.must_equal nil
