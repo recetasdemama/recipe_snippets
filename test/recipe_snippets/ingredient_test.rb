@@ -22,25 +22,25 @@ module RecipeSnippets
         i.amount.must_equal "1"
         i.name.must_equal "berenjena"        
       end
-=begin      
+     
       it "parses sal" do
         i = Ingredient.new("sal")
-        i.amount.must_equal nil
+        i.amount.must_equal ""
         i.name.must_equal "sal"
       end
-      
+
       it "parses 'aceite de oliva virgen'" do
         i = Ingredient.new("aceite de oliva virgen")
-        i.amount.must_equal nil
+        i.amount.must_equal ""
         i.name.must_equal "aceite de oliva virgen"
       end
-      
+
       it "parses 'zumo de un limón'" do
         i = Ingredient.new("zumo de un limón")
         i.amount.must_equal "un"
         i.name.must_equal "limón"
       end
-=end      
+
     end
   end
 end

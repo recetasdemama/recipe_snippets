@@ -1,12 +1,12 @@
 grammar IngredientLine
 
   rule ingredient
-    ingredient_amount sp "de"? sp line_to_eol {
+   ("zumo" sp "de" sp)? optional_amount:(ingredient_amount?) line_to_eol {
       def name
         line_to_eol.text_value
       end
       def amount
-        ingredient_amount.amount
+        optional_amount.text_value
       end
     }
   end
@@ -16,8 +16,8 @@ grammar IngredientLine
   end
   
   rule ingredient_amount
-    number sp_unit {
-      def amount
+    number sp_unit sp "de"? sp {
+      def text_value
         number.text_value + sp_unit.text_value
       end
     }
@@ -32,7 +32,7 @@ grammar IngredientLine
   end
   
   rule number
-    '-'? [1-9] [0-9]*
+    '-'? [1-9] [0-9]* / "un"
   end
 
   rule line_to_eol
