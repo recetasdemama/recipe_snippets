@@ -28,11 +28,11 @@ grammar IngredientLine
   end
   
   rule unit
-    "gramos" / "ml" / "g" / "kilo"
+    "gramos" / "ml" / "g" / "kilo" / "lata" / "vasito"
   end
   
   rule ingredient_preparation
-    caps_article? sp ("zumo" / "cáscara" / "ralladura" / "rodajas") sp "de" sp 
+    caps_article? sp ("zumo" / "cáscara" / "ralladura" / "rodajas" ) sp "de" sp 
   end
   
   rule number

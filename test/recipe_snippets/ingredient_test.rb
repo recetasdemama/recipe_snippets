@@ -7,6 +7,7 @@ module RecipeSnippets
     
     describe "parsing" do
       test_ingredient_parse "100 gramos de queso", "100 gramos", "queso"    
+      test_ingredient_parse "100 g de queso", "100 g", "queso"    
       test_ingredient_parse "100g de queso", "100g", "queso"
       test_ingredient_parse "30 ml de aceite de girasol", "30 ml", "aceite de girasol"
       test_ingredient_parse "1 berenjena", "1", "berenjena"
@@ -17,6 +18,12 @@ module RecipeSnippets
       test_ingredient_parse "ralladura de naranja", "", "naranja"
       test_ingredient_parse "medio kilo de aceitunas", "medio kilo", "aceitunas"
       test_ingredient_parse "Unas rodajas de zanahoria", "", "zanahoria"
+      test_ingredient_parse "1 lata de leche condensada", "1 lata", "leche condensada"
+      test_ingredient_parse "1 lata pequeña de leche condensada", "1 lata", "leche condensada"
+      test_ingredient_parse "500 ml de nata para montar", "500 ml", "nata para montar"
+      test_ingredient_parse "6 huevos", "6", "huevos"
+      test_ingredient_parse "un vasito de leche", "un vasito", "leche"
+      test_ingredient_parse "1/2 litro de natillas caseras", "1/2 litro", "natillas caseras"
     end
     
     describe "rendering" do
